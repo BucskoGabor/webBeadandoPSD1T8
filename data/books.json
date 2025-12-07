@@ -1,0 +1,273 @@
+{
+  "library": {
+    "name": "Városi Központi Könyvtár",
+    "books": [
+      {
+        "id": 1,
+        "title": "A gyűrűk ura",
+        "author": {
+          "firstName": "J.R.R.",
+          "lastName": "Tolkien"
+        },
+        "isbn": "978-9631199370",
+        "category": "Fantasy",
+        "publishYear": 1954,
+        "available": true,
+        "description": "Epikus történet Középföldéről és a Gyűrű elpusztításáról.",
+        "rating": 4.9
+      },
+      {
+        "id": 2,
+        "title": "1984",
+        "author": {
+          "firstName": "George",
+          "lastName": "Orwell"
+        },
+        "isbn": "978-9631423563",
+        "category": "Disztópia",
+        "publishYear": 1949,
+        "available": true,
+        "description": "Totalitárius jövőkép és a megfigyelő állam rémképe.",
+        "rating": 4.8
+      },
+      {
+        "id": 3,
+        "title": "A mester és Margarita",
+        "author": {
+          "firstName": "Mihail",
+          "lastName": "Bulgakov"
+        },
+        "isbn": "978-9631361896",
+        "category": "Klasszikus",
+        "publishYear": 1967,
+        "available": false,
+        "description": "A Sátán látogatása Moszkvában és Poncius Pilátus története.",
+        "rating": 4.7
+      },
+      {
+        "id": 4,
+        "title": "Száz év magány",
+        "author": {
+          "firstName": "Gabriel García",
+          "lastName": "Márquez"
+        },
+        "isbn": "978-9631361209",
+        "category": "Klasszikus",
+        "publishYear": 1967,
+        "available": true,
+        "description": "A Buendía család több nemzedékének varázslatos története.",
+        "rating": 4.6
+      },
+      {
+        "id": 5,
+        "title": "Harry Potter és a bölcsek köve",
+        "author": {
+          "firstName": "J.K.",
+          "lastName": "Rowling"
+        },
+        "isbn": "978-9633245804",
+        "category": "Fantasy",
+        "publishYear": 1997,
+        "available": true,
+        "description": "Egy fiatal varázsló kalandjai Roxfortban.",
+        "rating": 4.9
+      },
+      {
+        "id": 6,
+        "title": "A kis herceg",
+        "author": {
+          "firstName": "Antoine de",
+          "lastName": "Saint-Exupéry"
+        },
+        "isbn": "978-9631199455",
+        "category": "Gyermek",
+        "publishYear": 1943,
+        "available": true,
+        "description": "Filozofikus mese gyerekeknek és felnőtteknek.",
+        "rating": 4.8
+      },
+      {
+        "id": 7,
+        "title": "Bűn és bűnhődés",
+        "author": {
+          "firstName": "Fjodor",
+          "lastName": "Dosztojevszkij"
+        },
+        "isbn": "978-9631360134",
+        "category": "Klasszikus",
+        "publishYear": 1866,
+        "available": true,
+        "description": "Egy fiatal férfi lelki küzdelme egy gyilkosság után.",
+        "rating": 4.7
+      },
+      {
+        "id": 8,
+        "title": "A hobbit",
+        "author": {
+          "firstName": "J.R.R.",
+          "lastName": "Tolkien"
+        },
+        "isbn": "978-9631199387",
+        "category": "Fantasy",
+        "publishYear": 1937,
+        "available": true,
+        "description": "Bilbó Zsákos kalandjai a sárkány kincséért.",
+        "rating": 4.8
+      },
+      {
+        "id": 9,
+        "title": "Az alchimista",
+        "author": {
+          "firstName": "Paulo",
+          "lastName": "Coelho"
+        },
+        "isbn": "978-9631361872",
+        "category": "Filozófia",
+        "publishYear": 1988,
+        "available": false,
+        "description": "Egy andalúziai pásztor utazása a kincsek felé.",
+        "rating": 4.5
+      },
+      {
+        "id": 10,
+        "title": "Fahrenheit 451",
+        "author": {
+          "firstName": "Ray",
+          "lastName": "Bradbury"
+        },
+        "isbn": "978-9631423570",
+        "category": "Disztópia",
+        "publishYear": 1953,
+        "available": true,
+        "description": "Egy tűzoltó küzdelme egy könyvégető társadalomban.",
+        "rating": 4.6
+      },
+      {
+        "id": 11,
+        "title": "A Gonosz Boszorkány",
+        "author": {
+          "firstName": "Gregory",
+          "lastName": "Maguire"
+        },
+        "isbn": "978-9631361285",
+        "category": "Fantasy",
+        "publishYear": 1995,
+        "available": true,
+        "description": "Az Óz történetének alternatív nézőpontja.",
+        "rating": 4.4
+      },
+      {
+        "id": 12,
+        "title": "Gyilkosság az Orient Expresszen",
+        "author": {
+          "firstName": "Agatha",
+          "lastName": "Christie"
+        },
+        "isbn": "978-9631361391",
+        "category": "Krimi",
+        "publishYear": 1934,
+        "available": true,
+        "description": "Hercule Poirot nyomoz egy luxusvonaton történt gyilkosság ügyében.",
+        "rating": 4.7
+      },
+      {
+        "id": 13,
+        "title": "Egri csillagok",
+        "author": {
+          "firstName": "Gárdonyi",
+          "lastName": "Géza"
+        },
+        "isbn": "978-9631199462",
+        "category": "Történelmi",
+        "publishYear": 1901,
+        "available": true,
+        "description": "Eger vára védelmének történelmi regénye.",
+        "rating": 4.8
+      },
+      {
+        "id": 14,
+        "title": "Az ember tragédiája",
+        "author": {
+          "firstName": "Madách",
+          "lastName": "Imre"
+        },
+        "isbn": "978-9631199479",
+        "category": "Dráma",
+        "publishYear": 1861,
+        "available": true,
+        "description": "Filozófiai dráma az emberiség történelméről.",
+        "rating": 4.6
+      },
+      {
+        "id": 15,
+        "title": "A Pál utcai fiúk",
+        "author": {
+          "firstName": "Molnár",
+          "lastName": "Ferenc"
+        },
+        "isbn": "978-9631199486",
+        "category": "Ifjúsági",
+        "publishYear": 1906,
+        "available": true,
+        "description": "Két budapesti fiúcsapat küzdelme egy farakásért.",
+        "rating": 4.7
+      },
+      {
+        "id": 16,
+        "title": "Sápadt kék pont",
+        "author": {
+          "firstName": "Carl",
+          "lastName": "Sagan"
+        },
+        "isbn": "978-9631361407",
+        "category": "Tudomány",
+        "publishYear": 1994,
+        "available": true,
+        "description": "Az emberiség helye az univerzumban.",
+        "rating": 4.9
+      },
+      {
+        "id": 17,
+        "title": "Sapiens",
+        "author": {
+          "firstName": "Yuval Noah",
+          "lastName": "Harari"
+        },
+        "isbn": "978-9631361414",
+        "category": "Tudomány",
+        "publishYear": 2011,
+        "available": true,
+        "description": "Az emberiség rövid története.",
+        "rating": 4.8
+      },
+      {
+        "id": 18,
+        "title": "A szél neve",
+        "author": {
+          "firstName": "Patrick",
+          "lastName": "Rothfuss"
+        },
+        "isbn": "978-9631361421",
+        "category": "Fantasy",
+        "publishYear": 2007,
+        "available": false,
+        "description": "Kvothe, a legendás mágus története.",
+        "rating": 4.7
+      },
+      {
+        "id": 19,
+        "title": "A rózsa neve",
+        "author": {
+          "firstName": "Umberto",
+          "lastName": "Eco"
+        },
+        "isbn": "978-9631361438",
+        "category": "Krimi",
+        "publishYear": 1980,
+        "available": true,
+        "description": "Középkori kolostorban elkövetett gyilkosságok.",
+        "rating": 4.6
+      }
+    ]
+  }
+}

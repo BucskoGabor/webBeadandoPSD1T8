@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztrációs útmutató - Városi Központi Könyvtár</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <h1>Városi Központi Könyvtár</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="catalog.html">Katalógus</a></li>
+                    <li><a href="authors.html">Szerzők</a></li>
+                    <li><a href="membership.html">Tagság</a></li>
+                    <li><a href="video.html">Regisztráció segítség</a></li>
+                    <li><a href="about.html">Rólunk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Regisztrációs űrlap kitöltési útmutató</h2>
+            <p>Nézze meg videós útmutatónkat, amely lépésről-lépésre bemutatja a könyvtári tagsági
+                regisztrációs űrlap helyes kitöltését. A videó segít elkerülni a gyakori hibákat és
+                megmutatja az összes mezőt részletesen.</p>
+
+            <article>
+                
+                <div class="video-container">
+                    <video id="libraryVideo" width="100%" poster="images/video-poster.jpg">
+                        <source src="video/registration-tutorial.mp4" type="video/mp4">
+                        Böngészője nem támogatja a videó lejátszást.
+                    </video>
+
+                    
+                    <div class="video-controls">
+                        <button id="playPauseBtn" class="button button-primary">▶ Lejátszás</button>
+                        <button id="stopBtn" class="button button-secondary">⏹ Megállítás</button>
+
+                        <div style="flex: 1; margin: 0 1rem;">
+                            <label for="volumeControl" style="display: block; margin-bottom: 0.5rem;">
+                                Hangerő: <span id="volumeValue">100</span>%
+                            </label>
+                            <input type="range" id="volumeControl" min="0" max="100" value="100" style="width: 100%;">
+                        </div>
+
+                        <div style="flex: 2;">
+                            <label for="progressBar" style="display: block; margin-bottom: 0.5rem;">
+                                Folyamat: <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                            </label>
+                            <input type="range" id="progressBar" min="0" max="100" value="0" style="width: 100%;">
+                        </div>
+
+                        <button id="fullscreenBtn" class="button">⛶ Teljes képernyő</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Mit mutat be a videó?</h3>
+                    <ul style="list-style-type: disc; margin-left: 20px; line-height: 2;">
+                        <li>Az űrlap mezőinek részletes bemutatása</li>
+                        <li>Helyes kitöltési módok és példák</li>
+                        <li>Email cím és telefonszám formátum</li>
+                        <li>Születési dátum megadása</li>
+                        <li>Tagság típusának kiválasztása</li>
+                        <li>Érdeklődési körök bejelölése</li>
+                        <li>Kedvenc szín és egyéb beállítások</li>
+                        <li>Gyakori hibák és validációs üzenetek</li>
+                        <li>Sikeres regisztráció folyamata</li>
+                    </ul>
+                </div>
+            </article>
+
+            <aside>
+                <h3>Hasznos tippek</h3>
+                <p><strong>Mielőtt elkezdi:</strong> Készítse elő az alábbi adatokat a gyorsabb kitöltéshez:</p>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.8;">
+                    <li>Teljes név (vezetéknév és keresztnév)</li>
+                    <li>Érvényes email cím</li>
+                    <li>Telefonszám (+36-os formátumban)</li>
+                    <li>Születési dátum</li>
+                </ul>
+                <a href="membership.html" class="button button-success"
+                    style="display: inline-block; margin-top: 1rem;">
+                    Ugrás a regisztrációhoz
+                </a>
+            </aside>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 Városi Központi Könyvtár. Minden jog fenntartva.</p>
+            <p>Kapcsolat: <a href="mailto:info@konyvtar.hu">info@konyvtar.hu</a> | Tel: +36 1 234 5678</p>
+            <p>Készítette: PSD1T8</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/video.js"></script>
+</body>
+
+</html>

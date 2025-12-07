@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagság - Városi Központi Könyvtár</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <h1>Városi Központi Könyvtár</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Főoldal</a></li>
+                    <li><a href="catalog.html">Katalógus</a></li>
+                    <li><a href="authors.html">Szerzők</a></li>
+                    <li><a href="membership.html">Tagság</a></li>
+                    <li><a href="video.html">Regisztráció segítség</a></li>
+                    <li><a href="about.html">Rólunk</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Regisztráció - Könyvtári tagság</h2>
+            <p>Töltse ki az alábbi űrlapot könyvtári tagsági kérelem benyújtásához. Minden mező kitöltése kötelező.</p>
+
+            <article style="max-width: 800px; margin: 2rem auto;">
+
+                <div
+                    style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #3498db;">
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Kitöltési lépések:</h3>
+                    <ol style="margin-left: 1.5rem; color: #555;">
+                        <li>Adja meg személyes adatait és elérhetőségeit.</li>
+                        <li>Válassza ki az Önnek megfelelő tagsági típust.</li>
+                        <li>Válassza ki érdeklődési körét a legördülő listából.</li>
+                        <li>Véglegesítse a regisztrációt a gomb megnyomásával.</li>
+                    </ol>
+                </div>
+
+                <form id="membershipForm">
+
+                    <div class="form-group">
+                        <label for="fullName">Teljes név *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="pl. Kovács János" required>
+                        <span class="error-message" id="fullNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail cím *</label>
+                        <input type="email" id="email" name="email" placeholder="pelda@email.hu" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Város</label>
+                        <input type="text" id="city" name="city" list="cities" placeholder="Válasszon vagy írja be...">
+                        <datalist id="cities">
+                            <option value="Budapest">
+                            <option value="Debrecen">
+                            <option value="Szeged">
+                            <option value="Miskolc">
+                            <option value="Pécs">
+                            <option value="Győr">
+                            <option value="Nyíregyháza">
+                            <option value="Kecskemét">
+                        </datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefonszám *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+36 30 123 4567" required>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthDate">Születési dátum *</label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                        <span class="error-message" id="birthDateError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tagság típusa *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="membershipType" value="basic" checked>
+                                <span>Alaptagság (1000 Ft/hó)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="membershipType" value="premium">
+                                <span>Prémium tagság (2500 Ft/hó)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="membershipType" value="family">
+                                <span>Családi tagság (4000 Ft/hó)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="membershipType" value="student">
+                                <span>Diák kedvezmény (500 Ft/hó)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Érdeklődési körök *</label>
+                        <select id="interests" name="interests" required
+                            style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                            <option value="">-- Válasszon kategóriát --</option>
+                            <option value="fiction">Szépirodalom</option>
+                            <option value="science">Tudományos művek</option>
+                            <option value="history">Történelem</option>
+                            <option value="kids">Gyermekkönyvek</option>
+                            <option value="crime">Krimi, thriller</option>
+                            <option value="romance">Romantikus irodalom</option>
+                            <option value="fantasy">Fantasy, sci-fi</option>
+                        </select>
+                        <span class="error-message" id="interestsError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visitFrequency">Hányszor látogat könyvtárunkba havonta? *</label>
+                        <input type="number" id="visitFrequency" name="visitFrequency" min="0" max="30" value="4"
+                            required>
+                        <span class="error-message" id="visitFrequencyError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="readingSpeed">Olvasási sebesség (könyv/hónap): <span
+                                id="speedValue">5</span></label>
+                        <input type="range" id="readingSpeed" name="readingSpeed" min="1" max="20" value="5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="favoriteColor">Kedvenc színe *</label>
+                        <input type="color" id="favoriteColor" name="favoriteColor" value="#3498db">
+                        <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 0.5rem;">
+                            (Könyvtári kártyája ezen színben lesz személyre szabva)
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Megjegyzések, különleges kérések</label>
+                        <textarea id="comments" name="comments"
+                            placeholder="Írja le, ha van valamilyen speciális igénye vagy kérdése..."
+                            rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                            <span>Elfogadom az <a href="#" style="color: #3498db;">Általános Szerződési Feltételeket</a>
+                                *</span>
+                        </label>
+                        <span class="error-message" id="acceptTermsError"></span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="button button-success"
+                            style="font-size: 1.1rem; padding: 1rem 3rem;">
+                            Regisztráció elküldése
+                        </button>
+                    </div>
+                </form>
+
+                <div id="successMessage" class="success-message">
+                    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Sikeres regisztráció!</p>
+                    <p>Köszönjük jelentkezését! Hamarosan felvesszük Önnel a kapcsolatot.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 Városi Központi Könyvtár. Minden jog fenntartva.</p>
+            <p>Kapcsolat: <a href="mailto:info@konyvtar.hu">info@konyvtar.hu</a> | Tel: +36 1 234 5678</p>
+            <p>Készítette: PSD1T8</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
+</body>
+
+</html>

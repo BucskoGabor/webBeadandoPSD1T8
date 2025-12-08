@@ -1,29 +1,29 @@
-
+﻿
 
 $(document).ready(function () {
 
-    
 
-    
+
+
     function validateEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    
+
     function validatePhone(phone) {
-        
+
         const phoneRegex = /^(\+36|06)?[\s-]?[0-9]{1,2}[\s-]?[0-9]{3}[\s-]?[0-9]{3,4}$/;
         return phoneRegex.test(phone.trim());
     }
 
-    
+
     function validateFullName(name) {
-        
+
         return name.trim().length >= 3 && name.trim().includes(' ');
     }
 
-    
+
     function validateBirthDate(date) {
         if (!date) return false;
         const selectedDate = new Date(date);
@@ -32,53 +32,53 @@ $(document).ready(function () {
         return selectedDate < today && selectedDate > minDate;
     }
 
-    
+
     function validateCheckboxes() {
         return $('input[name="interests"]:checked').length > 0;
     }
 
-    
+
     function showError(fieldId, message) {
-        
+
         const $field = $('#' + fieldId);
         const $error = $('#' + fieldId + 'Error');
 
-        
+
         $field.addClass('error');
 
-        
+
         $error.text(message).show();
 
-        
+
         $field.animate({ marginLeft: '-10px' }, 50)
             .animate({ marginLeft: '10px' }, 50)
             .animate({ marginLeft: '-10px' }, 50)
             .animate({ marginLeft: '0px' }, 50);
     }
 
-    
+
     function clearError(fieldId) {
         const $field = $('#' + fieldId);
         const $error = $('#' + fieldId + 'Error');
 
-        
+
         $field.removeClass('error');
 
-        
+
         $error.text('').hide();
 
-        
+
         $field.css('border-color', '#27ae60');
 
-        
+
         setTimeout(function () {
             $field.css('border-color', '');
         }, 2000);
     }
 
-    
 
-    
+
+
     $('#fullName').on('blur', function () {
         const name = $(this).val();
         if (!validateFullName(name)) {
@@ -88,7 +88,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     $('#email').on('blur', function () {
         const email = $(this).val();
         if (!validateEmail(email)) {
@@ -98,7 +98,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     $('#phone').on('blur', function () {
         const phone = $(this).val();
         if (!validatePhone(phone)) {
@@ -108,7 +108,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     $('#birthDate').on('change', function () {
         const date = $(this).val();
         if (!validateBirthDate(date)) {
@@ -118,7 +118,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     $('#visitFrequency').on('blur', function () {
         const freq = parseInt($(this).val());
         if (isNaN(freq) || freq < 0 || freq > 30) {
@@ -128,15 +128,15 @@ $(document).ready(function () {
         }
     });
 
-    
+
     $('#membershipForm').on('submit', function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         let isValid = true;
 
-        
 
-        
+
+
         const fullName = $('#fullName').val();
         if (!validateFullName(fullName)) {
             showError('fullName', 'Kérjük, adja meg teljes nevét!');
@@ -145,7 +145,7 @@ $(document).ready(function () {
             clearError('fullName');
         }
 
-        
+
         const email = $('#email').val();
         if (!validateEmail(email)) {
             showError('email', 'Kérjük, adjon meg érvényes email címet!');
@@ -154,7 +154,7 @@ $(document).ready(function () {
             clearError('email');
         }
 
-        
+
         const phone = $('#phone').val();
         if (!validatePhone(phone)) {
             showError('phone', 'Kérjük, adjon meg érvényes telefonszámot!');
@@ -163,7 +163,7 @@ $(document).ready(function () {
             clearError('phone');
         }
 
-        
+
         const birthDate = $('#birthDate').val();
         if (!validateBirthDate(birthDate)) {
             showError('birthDate', 'Kérjük, adjon meg érvényes születési dátumot!');
@@ -172,7 +172,7 @@ $(document).ready(function () {
             clearError('birthDate');
         }
 
-        
+
         if (!validateCheckboxes()) {
             showError('interests', 'Kérjük, válasszon legalább egy érdeklődési kört!');
             isValid = false;
@@ -180,7 +180,7 @@ $(document).ready(function () {
             clearError('interests');
         }
 
-        
+
         const visitFreq = parseInt($('#visitFrequency').val());
         if (isNaN(visitFreq) || visitFreq < 0 || visitFreq > 30) {
             showError('visitFrequency', 'Kérjük, 0 és 30 közötti számot adjon meg!');
@@ -189,7 +189,7 @@ $(document).ready(function () {
             clearError('visitFrequency');
         }
 
-        
+
         if (!$('#acceptTerms').is(':checked')) {
             showError('acceptTerms', 'Az ÁSZF elfogadása kötelező!');
             isValid = false;
@@ -197,20 +197,20 @@ $(document).ready(function () {
             clearError('acceptTerms');
         }
 
-        
+
         if (isValid) {
-            
+
             $('#successMessage').addClass('show').slideDown(600);
 
-            
+
             $('#membershipForm').slideUp(600);
 
-            
+
             $('html, body').animate({
                 scrollTop: $('#successMessage').offset().top - 100
             }, 600);
 
-            
+
             console.log('Form sikeresen elküldve!');
             console.log('Adatok:', {
                 fullName: fullName,
@@ -228,7 +228,7 @@ $(document).ready(function () {
             });
 
         } else {
-            
+
             if ($('#validation-error').length === 0) {
                 const $errorBox = $('<div>', {
                     id: 'validation-error',
@@ -245,15 +245,15 @@ $(document).ready(function () {
 
                 $('#membershipForm').prepend($errorBox);
 
-                
+
                 $errorBox.hide().fadeIn(400);
 
-                
+
                 $('html, body').animate({
                     scrollTop: $('#membershipForm').offset().top - 150
                 }, 400);
 
-                
+
                 setTimeout(function () {
                     $errorBox.fadeOut(400, function () {
                         $(this).remove();
@@ -263,5 +263,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#favoriteColor').on('input change', function () {
+        const color = $(this).val();
+        $('#colorPreview').css('background', color);
+        $('#colorCode').text(color.toUpperCase());
+    });
+
     console.log('Form validation JavaScript betöltve');
 });
+

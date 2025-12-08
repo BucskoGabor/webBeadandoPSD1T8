@@ -138,7 +138,16 @@
 
                     <div class="form-group">
                         <label for="favoriteColor">Kedvenc színe *</label>
-                        <input type="color" id="favoriteColor" name="favoriteColor" value="#3498db">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                            <input type="color" id="favoriteColor" name="favoriteColor" value="#3498db"
+                                style="width: 80px; height: 50px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; padding: 3px;"
+                                oninput="document.getElementById('colorPreview').style.background = this.value; document.getElementById('colorCode').textContent = this.value.toUpperCase();">
+                            <div id="colorPreview"
+                                style="flex: 1; height: 50px; background: #3498db; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                                <span id="colorCode"
+                                    style="background: rgba(255,255,255,0.9); padding: 0.3rem 0.8rem; border-radius: 4px; font-family: monospace; font-weight: bold; font-size: 1rem;">#3498db</span>
+                            </div>
+                        </div>
                         <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 0.5rem;">
                             (Könyvtári kártyája ezen színben lesz személyre szabva)
                         </p>

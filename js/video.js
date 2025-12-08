@@ -1,61 +1,87 @@
-
+/**
+ * video.js - Egyedi videó lejátszó vezérlő
+ * Lejátszás, hangerő, fullscreen és billentyűzet vezérlés
+ */
 
 $(document).ready(function () {
 
-    
+    // ============================================================
+    // VIDEÓ ELEM REFERENCIA
+    // ============================================================
+
     const video = document.getElementById('libraryVideo');
 
+    // Ha nincs videó elem az oldalon, kilépés
     if (!video) {
         console.log('Videó elem nem található az oldalon');
         return;
     }
 
-    
-    const $playPauseBtn = $('#playPauseBtn');
-    const $stopBtn = $('#stopBtn');
-    const $volumeControl = $('#volumeControl');
-    const $progressBar = $('#progressBar');
-    const $fullscreenBtn = $('#fullscreenBtn');
+    // ============================================================
+    // KONTROL ELEMEK REFERENCIÁI
+    // ============================================================
 
-    
+    const $playPauseBtn = $('#playPauseBtn');      // Play/Pause gomb
+    const $stopBtn = $('#stopBtn');                 // Stop gomb
+    const $volumeControl = $('#volumeControl');     // Hangerő csúszka
+    const $progressBar = $('#progressBar');         // Időcsúszka
+    const $fullscreenBtn = $('#fullscreenBtn');     // Teljes képernyő gomb
+
+    // ============================================================
+    // PLAY/PAUSE GOMB
+    // ============================================================
+
     $playPauseBtn.on('click', function () {
         if (video.paused) {
+            // Ha áll, indítás
             video.play();
-            
             $(this).html('⏸ Szünet');
             $(this).removeClass('button-primary').addClass('button-secondary');
         } else {
+            // Ha megy, megállítás
             video.pause();
             $(this).html('▶ Lejátszás');
             $(this).removeClass('button-secondary').addClass('button-primary');
         }
     });
 
-    
+    // ============================================================
+    // STOP GOMB
+    // ============================================================
+
     $stopBtn.on('click', function () {
-        video.pause();
-        video.currentTime = 0;
+        video.pause();                          // Megállítás
+        video.currentTime = 0;                  // Visszaugrás az elejére
         $playPauseBtn.html('▶ Lejátszás');
         $playPauseBtn.removeClass('button-secondary').addClass('button-primary');
         $progressBar.val(0);
     });
 
-    
+    // ============================================================
+    // HANGERŐ VEZÉRLÉS
+    // ============================================================
+
     $volumeControl.on('input', function () {
+        // Hangerő 0-100 -> 0-1 konverzió
         const volume = $(this).val() / 100;
         video.volume = volume;
 
-        
+        // Kijelző frissítése
         $('#volumeValue').text($(this).val());
     });
 
-    
+    // ============================================================
+    // IDŐCSÚSZKA FRISSÍTÉSE
+    // ============================================================
+
+    // Lejátszás közben folyamatosan frissül
     video.addEventListener('timeupdate', function () {
         if (video.duration) {
+            // Százalékos pozíció kiszámítása
             const progress = (video.currentTime / video.duration) * 100;
             $progressBar.val(progress);
 
-            
+            // Idő kijelzés formázása
             const current = formatTime(video.currentTime);
             const total = formatTime(video.duration);
 
@@ -64,15 +90,19 @@ $(document).ready(function () {
         }
     });
 
-    
+    // Csúszka húzása: pozíció állítás
     $progressBar.on('input', function () {
         const time = ($(this).val() / 100) * video.duration;
         video.currentTime = time;
     });
 
-    
+    // ============================================================
+    // TELJES KÉPERNYŐ
+    // ============================================================
+
     $fullscreenBtn.on('click', function () {
         if (!document.fullscreenElement) {
+            // Belépés fullscreen módba (böngésző-kompatibilis)
             if (video.requestFullscreen) {
                 video.requestFullscreen();
             } else if (video.webkitRequestFullscreen) {
@@ -82,6 +112,7 @@ $(document).ready(function () {
             }
             $(this).html('⛶ Kilépés');
         } else {
+            // Kilépés fullscreen módból
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             }
@@ -89,14 +120,18 @@ $(document).ready(function () {
         }
     });
 
-    
+    // Fullscreen változás figyelése (pl. ESC billentyűre)
     document.addEventListener('fullscreenchange', function () {
         if (!document.fullscreenElement) {
             $fullscreenBtn.html('⛶ Teljes képernyő');
         }
     });
 
-    
+    // ============================================================
+    // IDŐ FORMÁZÓ SEGÉDFÜGGVÉNY
+    // ============================================================
+
+    // Másodpercek -> perc:másodperc formátum
     function formatTime(seconds) {
         if (isNaN(seconds)) return '0:00';
 
@@ -105,19 +140,27 @@ $(document).ready(function () {
         return minutes + ':' + (secs < 10 ? '0' : '') + secs;
     }
 
-    
+    // ============================================================
+    // VIDEÓ METAADAT BETÖLTÉS
+    // ============================================================
+
+    // Videó teljes hosszának kijelzése betöltés után
     video.addEventListener('loadedmetadata', function () {
         $('#duration').text(formatTime(video.duration));
         console.log('Videó metaadatok betöltve. Időtartam:', formatTime(video.duration));
     });
 
-    
+    // ============================================================
+    // VIDEÓ VÉGE ESEMÉNY
+    // ============================================================
+
     video.addEventListener('ended', function () {
+        // Gombok visszaállítása
         $playPauseBtn.html('▶ Lejátszás');
         $playPauseBtn.removeClass('button-secondary').addClass('button-primary');
         $progressBar.val(0);
 
-        
+        // Befejezés üzenet megjelenítése
         const $message = $('<div>', {
             css: {
                 background: '#27ae60',
@@ -132,40 +175,43 @@ $(document).ready(function () {
 
         $('.video-container').after($message);
 
-        
+        // 3 mp után eltűnik az üzenet
         $message.hide().fadeIn(400).delay(3000).fadeOut(400, function () {
             $(this).remove();
         });
     });
 
-    
+    // ============================================================
+    // BILLENTYŰZET VEZÉRLÉS
+    // ============================================================
+
     $(document).on('keydown', function (e) {
-        
+        // Csak ha a videó látható
         if ($('#libraryVideo:visible').length > 0) {
             switch (e.key) {
-                case ' ': 
+                case ' ':           // SZÓKÖZ: play/pause
                     e.preventDefault();
                     $playPauseBtn.click();
                     break;
-                case 'ArrowRight': 
+                case 'ArrowRight':  // JOBBRA: +5 mp
                     e.preventDefault();
                     video.currentTime += 5;
                     break;
-                case 'ArrowLeft': 
+                case 'ArrowLeft':   // BALRA: -5 mp
                     e.preventDefault();
                     video.currentTime -= 5;
                     break;
-                case 'ArrowUp': 
+                case 'ArrowUp':     // FEL: hangerő +10%
                     e.preventDefault();
                     const newVolumeUp = Math.min(100, parseInt($volumeControl.val()) + 10);
                     $volumeControl.val(newVolumeUp).trigger('input');
                     break;
-                case 'ArrowDown': 
+                case 'ArrowDown':   // LE: hangerő -10%
                     e.preventDefault();
                     const newVolumeDown = Math.max(0, parseInt($volumeControl.val()) - 10);
                     $volumeControl.val(newVolumeDown).trigger('input');
                     break;
-                case 'f': 
+                case 'f':           // F: fullscreen
                 case 'F':
                     e.preventDefault();
                     $fullscreenBtn.click();
@@ -174,7 +220,10 @@ $(document).ready(function () {
         }
     });
 
-    
+    // ============================================================
+    // KONTROL GOMBOK HOVER EFFEKT
+    // ============================================================
+
     $('.video-controls button').hover(
         function () {
             $(this).css({
@@ -190,6 +239,7 @@ $(document).ready(function () {
         }
     );
 
+    // Debug info konzolba
     console.log('Video controls JavaScript betöltve');
     console.log('Billentyűzet vezérlés: Szóköz (play/pause), Nyilak (navigáció, hangerő), F (fullscreen)');
 });
